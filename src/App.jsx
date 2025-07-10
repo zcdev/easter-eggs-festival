@@ -124,10 +124,8 @@ export default function App() {
     <>
       <Header message={message} />
       <main>
-        <Scoreboard />
-        <p>{state.currentScore} {state.targetScore}</p>
-        <p>{state.winScore} {state.lossScore}</p>
-        <EggList>
+        <Scoreboard state={state} />
+        <EggList state={state}>
           {eggs.map(egg => (
             <Egg
               key={egg.id}
