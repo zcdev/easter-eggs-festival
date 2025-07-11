@@ -4,6 +4,7 @@ import Scoreboard from './components/Scoreboard'
 import EggList from './components/EggList'
 import Egg from './components/Egg'
 import { getRandomInt } from './utils/randomize'
+import Button from './components/Button'
 
 const messages = {
   intro: "🌸 Pick wisely! Each egg holds a mystery number. Can you hit the target score exactly?",
@@ -59,17 +60,23 @@ function gameReducer(state, action) {
         currentScore: newScore
       }
 
-    case 'RETRY':
+    case 'RESET_GAME':
+      // Get reset score from action payload if it's not undefined
+      const resetScore = action.payload ?? 0
+
+      // Reset game scores and status
       return {
         ...state,
         currentScore: 0,
         targetScore: getRandomInt(19, 120),
+        winScore: resetScore,
+        lossScore: resetScore,
         isGameOver: false,
         showModal: false
       }
 
     default:
-      throw new Error(`Unhandled action type: ${action.type}`);
+      throw new Error(`Unhandled action type: ${action.type}`)
   }
 }
 
@@ -115,9 +122,15 @@ export default function App() {
       // If the game is not over, add the egg value to the current score
       dispatch({ type: 'CLICK_EGG', payload: { value } })
     } else {
-      // If the game is over, reset for a new round
-      dispatch({ type: 'RETRY' })
+      // If the game is over, reset for a new round but keep the win/loss scores
+      dispatch({ type: 'RESET_GAME' })
     }
+  }
+
+  // Handle the play again button
+  function handleRetry() {
+    // Reset the entire game
+    dispatch({ type: 'RESET_GAME', payload: 0 })
   }
 
   return (
@@ -134,6 +147,11 @@ export default function App() {
             />
           ))}
         </EggList>
+        <section className="game-controls" aria-label="Game controls">
+          <Button onClick={handleRetry} aria-label="Play again">
+            Play Again
+          </Button>
+        </section>
       </main>
     </>
   )
