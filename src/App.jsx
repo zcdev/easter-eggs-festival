@@ -1,9 +1,10 @@
-import { useState, useReducer } from 'react'
+import { useState, useReducer, useEffect } from 'react'
 import Header from './components/Header'
 import Scoreboard from './components/Scoreboard'
 import EggList from './components/EggList'
 import Egg from './components/Egg'
 import { getRandomInt } from './utils/randomize'
+import { playSound } from './utils/playsounds'
 import Button from './components/Button'
 
 const messages = {
@@ -20,6 +21,8 @@ const initialScores = {
   winScore: 0,
   lossScore: 0,
   isGameOver: false,
+  isWin: false,
+  isLoss: false,
   showModal: false
 }
 
@@ -39,6 +42,8 @@ function gameReducer(state, action) {
           currentScore: newScore,
           winScore: state.winScore + 1,
           isGameOver: true,
+          isWin: true,
+          isLoss: false,
           showModal: true
         }
       }
@@ -50,6 +55,8 @@ function gameReducer(state, action) {
           currentScore: newScore,
           lossScore: state.lossScore + 1,
           isGameOver: true,
+          isWin: false,
+          isLoss: true,
           showModal: true
         }
       }
@@ -60,19 +67,21 @@ function gameReducer(state, action) {
         currentScore: newScore
       }
 
-    case 'RESET_GAME':
-      // Get reset score from action payload if it's not undefined
-      const resetScore = action.payload ?? 0
-
+    case 'RETRY_GAME':
       // Reset game scores and status
       return {
         ...state,
         currentScore: 0,
         targetScore: getRandomInt(19, 120),
-        winScore: resetScore,
-        lossScore: resetScore,
         isGameOver: false,
         showModal: false
+      }
+
+    case 'RESTART_GAME':
+      // Reset game from initial scores and get randomized target score
+      return {
+        ...initialScores,
+        targetScore: getRandomInt(19, 120)
       }
 
     default:
@@ -123,15 +132,23 @@ export default function App() {
       dispatch({ type: 'CLICK_EGG', payload: { value } })
     } else {
       // If the game is over, reset for a new round but keep the win/loss scores
-      dispatch({ type: 'RESET_GAME' })
+      dispatch({ type: 'RETRY_GAME' })
     }
   }
 
   // Handle the play again button
   function handleRetry() {
-    // Reset the entire game
-    dispatch({ type: 'RESET_GAME', payload: 0 })
+    // Restart the entire game from initial state
+    dispatch({ type: 'RESTART_GAME' })
   }
+
+  useEffect(() => {
+    if (state.isWin === true && state.isGameOver === true) playSound('win') // winSound = './assets/sounds/easter-eggs-festival-fx-win.mp3'
+  
+    if (state.isLoss === true && state.isGameOver === true) playSound('loss') // lossSound = './assets/sounds/easter-eggs-festival-fx-loss.mp3'
+
+    // Play the sound clip every time the score is updated
+  }, [state.winScore, state.lossScore])
 
   return (
     <>
