@@ -3,8 +3,8 @@ import Header from './components/Header'
 import Scoreboard from './components/Scoreboard'
 import EggList from './components/EggList'
 import Egg from './components/Egg'
-import { getRandomInt } from './utils/randomize'
-import { playSound } from './utils/playsounds'
+import { getRandomInt } from './utils/math'
+import { playSound, stopSound } from './utils/sounds'
 import Button from './components/Button'
 
 const messages = {
@@ -15,6 +15,7 @@ const messages = {
   retry: "🐇 Ready to hunt again? Click an egg to start a new round!"
 }
 
+// Initial game state including score, status flags, and sound settings
 const initialScores = {
   currentScore: 0,
   targetScore: getRandomInt(19, 120),
@@ -23,11 +24,13 @@ const initialScores = {
   isGameOver: false,
   isWin: false,
   isLoss: false,
+  isMuted: false,
   showModal: false
 }
 
 function gameReducer(state, action) {
   switch (action.type) {
+    // Add the clicked egg’s value to the current score
     case 'CLICK_EGG':
       // Get the value of the egg from the action payload
       const eggValue = action.payload.value
@@ -66,9 +69,17 @@ function gameReducer(state, action) {
         ...state,
         currentScore: newScore
       }
+    
+    // Toggle sound setting and stop any currently playing audio
+    case 'TOGGLE_SOUND':
+      // Turn on/off sound
+      return {
+        ...state,
+        isMuted: !state.isMuted
+      }
 
+    // Start a new round (reset score and status flags, keep win/loss)
     case 'RETRY_GAME':
-      // Reset game scores and status
       return {
         ...state,
         currentScore: 0,
@@ -77,8 +88,8 @@ function gameReducer(state, action) {
         showModal: false
       }
 
+    // Reset everything to the initial state, with a new target score
     case 'RESTART_GAME':
-      // Reset game from initial scores and get randomized target score
       return {
         ...initialScores,
         targetScore: getRandomInt(19, 120)
@@ -136,16 +147,25 @@ export default function App() {
     }
   }
 
-  // Handle the play again button
-  function handleRetry() {
+  // Handle the start over button
+  function handleRestart() {
     // Restart the entire game from initial state
     dispatch({ type: 'RESTART_GAME' })
   }
 
+  // Handle sound toggle
+  function toggleSound() {
+    // Turn on/off sounds for the rest of the game
+    dispatch({ type: 'TOGGLE_SOUND' })
+    // Immediately mute the sound
+    stopSound()
+  }
+
+  // Play win/loss sound clip after the score updates, unless muted
   useEffect(() => {
-    if (state.isWin === true && state.isGameOver === true) playSound('win') // winSound = './assets/sounds/easter-eggs-festival-fx-win.mp3'
+    if (state.isWin === true && state.isGameOver === true && state.isMuted === false) playSound('win') // winSound = './assets/sounds/easter-eggs-festival-fx-win.mp3'
   
-    if (state.isLoss === true && state.isGameOver === true) playSound('loss') // lossSound = './assets/sounds/easter-eggs-festival-fx-loss.mp3'
+    if (state.isLoss === true && state.isGameOver === true && state.isMuted === false) playSound('loss') // lossSound = './assets/sounds/easter-eggs-festival-fx-loss.mp3'
 
     // Play the sound clip every time the score is updated
   }, [state.winScore, state.lossScore])
@@ -165,8 +185,11 @@ export default function App() {
           ))}
         </EggList>
         <section className="game-controls" aria-label="Game controls">
-          <Button onClick={handleRetry} aria-label="Play again">
-            Play Again
+          <Button onClick={handleRestart} aria-label="Start over">
+            Start Over
+          </Button>
+          <Button onClick={toggleSound} aria-label={state.isMuted === true ? "Turn On Sound" : "Turn Off Sound" }>
+            {state.isMuted === true ? "Turn On Sound" : "Turn Off Sound"}
           </Button>
         </section>
       </main>
