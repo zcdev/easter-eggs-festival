@@ -1,10 +1,12 @@
 export default function Scoreboard({ state }) {
     return (
         <>
-            <section aria-label="Game status">
-                <p>Target score: {state.targetScore}</p>
-                <p>Win score: {state.winScore}</p>
-                <p>Loss score: {state.lossScore}</p>
+            <section className="scoreboard" aria-label="Game scores">
+                <p>Target score: <span>{state.targetScore}</span></p>
+                <div className="gamestatus" aria-label="Game status">
+                    <p>Win score: <span>{state.winScore}</span></p>
+                    <p>Loss score: <span>{state.lossScore}</span></p>
+                </div>
             </section>
         </>
     )
