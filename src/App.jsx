@@ -6,17 +6,18 @@ import Egg from './components/Egg'
 import { getRandomInt } from './utils/math'
 import { playSound, stopSound } from './utils/sounds'
 import Button from './components/Button'
+import Modal from './components/Modal'
 
 const messages = {
   intro: "🌸 Pick wisely! Each egg holds a mystery number. Can you hit the target score exactly?",
   win: "🐣 Egg-cellent! You've matched the target score perfectly!",
-  lose: "🥚 Oops! You went over the target. Try again!",
+  loss: "🥚 Oops! You went over the target.",
   progress: "🧺 The eggs are adding up—watch your total!",
   retry: "🐇 Ready to hunt again? Click an egg to start a new round!"
 }
 
 // Initial game state including score, status flags, and sound settings
-const initialScores = {
+const initialGameState = {
   currentScore: 0,
   targetScore: getRandomInt(19, 120),
   winScore: 0,
@@ -25,6 +26,7 @@ const initialScores = {
   isWin: false,
   isLoss: false,
   isMuted: false,
+  isOpen: false,
   showModal: false
 }
 
@@ -72,14 +74,13 @@ function gameReducer(state, action) {
     
     // Toggle sound setting and stop any currently playing audio
     case 'TOGGLE_SOUND':
-      // Turn on/off sound
       return {
         ...state,
         isMuted: !state.isMuted
       }
 
-    // Start a new round (reset score and status flags, keep win/loss)
-    case 'RETRY_GAME':
+    // Start a new round: reset score and status, keep win/loss tally
+    case 'REPLAY_GAME':
       return {
         ...state,
         currentScore: 0,
@@ -89,9 +90,9 @@ function gameReducer(state, action) {
       }
 
     // Reset everything to the initial state, with a new target score
-    case 'RESTART_GAME':
+    case 'RESET_GAME':
       return {
-        ...initialScores,
+        ...initialGameState,
         targetScore: getRandomInt(19, 120)
       }
 
@@ -108,7 +109,7 @@ export default function App() {
   const [eggs, setEggs] = useState(() => generateEggs(4))
 
   // Initialize scores by reducer function
-  const [state, dispatch] = useReducer(gameReducer, initialScores)
+  const [state, dispatch] = useReducer(gameReducer, initialGameState) 
 
   // Generate a list of eggs with unique random values
   function generateEggs(count) {
@@ -135,30 +136,32 @@ export default function App() {
     }))
   }
 
-  // Handle the value from the egg clicked
+  // Add egg value if game is ongoing
   function handleClick(value) {
     // Check if the game is over
     if (state.isGameOver === false) {
       // If the game is not over, add the egg value to the current score
       dispatch({ type: 'CLICK_EGG', payload: { value } })
     } else {
-      // If the game is over, reset for a new round but keep the win/loss scores
-      dispatch({ type: 'RETRY_GAME' })
+      // If the game is over, start a new round
+      replayGame()
     }
   }
 
-  // Handle the start over button
-  function handleRestart() {
-    // Restart the entire game from initial state
-    dispatch({ type: 'RESTART_GAME' })
+  // Reset the entire game from initial state
+  function resetGame() {
+    dispatch({ type: 'RESET_GAME' })
   }
 
-  // Handle sound toggle
+  // Toggle sound and stop any currently playing audio
   function toggleSound() {
-    // Turn on/off sounds for the rest of the game
     dispatch({ type: 'TOGGLE_SOUND' })
-    // Immediately mute the sound
     stopSound()
+  }
+
+  // Play the game again
+  function replayGame() {
+    dispatch({ type: 'REPLAY_GAME' })
   }
 
   // Play win/loss sound clip after the score updates, unless muted
@@ -185,7 +188,7 @@ export default function App() {
           ))}
         </EggList>
         <section className="game-controls" aria-label="Game controls">
-          <Button onClick={handleRestart} aria-label="Start over">
+          <Button onClick={resetGame} aria-label="Start over">
             Start Over
           </Button>
           <Button onClick={toggleSound} aria-label={state.isMuted === true ? "Turn On Sound" : "Turn Off Sound" }>
@@ -193,6 +196,10 @@ export default function App() {
           </Button>
         </section>
       </main>
+      <Modal isOpen={state.showModal} onClose={replayGame}>
+        <h2>{state.isWin ? message.win : message.loss}</h2>
+        <button className="game-button" onClick={replayGame}>{state.isWin ? "Play Again" : "Try Again"}</button>
+      </Modal>
     </>
   )
 }
