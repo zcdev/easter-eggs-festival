@@ -102,14 +102,22 @@ header p {
 
 button.egg {
   background-color: rgba(0, 0, 0, 0);
+  padding: 10px 4px;
   border: 0;
   outline: 0;
 }
 
 button.egg:focus {
-  padding: 10px 4px;
   outline: 2px solid rgba(246, 161, 173, 1);
   outline-offset: 2px;
+}
+
+.egg {
+  transition: transform 0.1s ease;
+}
+
+.egg:active {
+  transform: scale(0.9);
 }
 
 .egg img {
@@ -139,7 +147,7 @@ button.egg:focus {
   cursor: pointer;
   background-color: rgba(246, 161, 173, 1);
   color: #fff;
-  transition: background 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
 .game-button:hover {
@@ -154,10 +162,11 @@ button.egg:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: grid;
   place-items: center;
   z-index: 1000;
+  animation: fadeIn 300ms ease-in-out forwards;
 }
 
 .modal-content {
@@ -166,10 +175,10 @@ button.egg:focus {
   padding: 2rem;
   max-width: 400px;
   width: 90%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   position: relative;
-  animation: modalFadeIn 0.3s ease;
+  animation: popIn 300ms ease-in-out forwards;
 }
 
 .modal-close {
@@ -183,13 +192,25 @@ button.egg:focus {
   color: #444;
 }
 
-/* Optional fade-in animation */
-@keyframes modalFadeIn {
+/* Modal animation effects */
+
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
   }
+
   to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -201,6 +222,7 @@ button.egg:focus {
   body {
     background-color: #333;
   }
+
   .egglist p {
     color: #222;
   }
@@ -212,12 +234,15 @@ button.egg:focus {
   header {
     margin-top: 3rem;
   }
+
   header h1 {
     font-size: 2rem;
   }
+
   header p {
     margin: 0.7rem 0;
   }
+
   .egglist ul {
     grid-template-columns: repeat(4, 100px);
   }
