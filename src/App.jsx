@@ -71,7 +71,7 @@ function gameReducer(state, action) {
         ...state,
         currentScore: newScore
       }
-    
+
     // Toggle sound setting and stop any currently playing audio
     case 'TOGGLE_SOUND':
       return {
@@ -109,7 +109,7 @@ export default function App() {
   const [eggs, setEggs] = useState(() => generateEggs(4))
 
   // Initialize scores by reducer function
-  const [state, dispatch] = useReducer(gameReducer, initialGameState) 
+  const [state, dispatch] = useReducer(gameReducer, initialGameState)
 
   // Generate a list of eggs with unique random values
   function generateEggs(count) {
@@ -144,7 +144,7 @@ export default function App() {
       dispatch({ type: 'CLICK_EGG', payload: { value } })
     } else {
       // If the game is over, start a new round
-      replayGame()
+      dispatch({ type: 'REPLAY_GAME' })
     }
   }
 
@@ -167,7 +167,7 @@ export default function App() {
   // Play win/loss sound clip after the score updates, unless muted
   useEffect(() => {
     if (state.isWin === true && state.isGameOver === true && state.isMuted === false) playSound('win') // winSound = './assets/sounds/easter-eggs-festival-fx-win.mp3'
-  
+
     if (state.isLoss === true && state.isGameOver === true && state.isMuted === false) playSound('loss') // lossSound = './assets/sounds/easter-eggs-festival-fx-loss.mp3'
 
     // Play the sound clip every time the score is updated
@@ -191,7 +191,7 @@ export default function App() {
           <Button onClick={resetGame} aria-label="Start over">
             Start Over
           </Button>
-          <Button onClick={toggleSound} aria-label={state.isMuted === true ? "Turn On Sound" : "Turn Off Sound" }>
+          <Button onClick={toggleSound} aria-label={state.isMuted === true ? "Turn On Sound" : "Turn Off Sound"}>
             {state.isMuted === true ? "Turn On Sound" : "Turn Off Sound"}
           </Button>
         </section>
