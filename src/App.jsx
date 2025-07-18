@@ -173,6 +173,11 @@ export default function App() {
     // Play the sound clip every time the score is updated
   }, [state.winScore, state.lossScore])
 
+  // Compute dynamic text for buttons and modal based on current state
+  const muteText = state.isMuted === true ? "Turn On Sound" : "Turn Off Sound"
+  const gameMessage = state.isWin ? message.win : message.loss
+  const replayText = state.isWin ? "Play Again" : "Try Again"
+
   return (
     <>
       <Header message={message} />
@@ -191,14 +196,14 @@ export default function App() {
           <Button onClick={resetGame} aria-label="Start over">
             Start Over
           </Button>
-          <Button onClick={toggleSound} aria-label={state.isMuted === true ? "Turn On Sound" : "Turn Off Sound"}>
-            {state.isMuted === true ? "Turn On Sound" : "Turn Off Sound"}
+          <Button onClick={toggleSound} aria-label={muteText}>
+            {muteText}
           </Button>
         </section>
       </main>
       <Modal isOpen={state.showModal} onClose={replayGame}>
-        <h2>{state.isWin ? message.win : message.loss}</h2>
-        <button className="game-button" onClick={replayGame}>{state.isWin ? "Play Again" : "Try Again"}</button>
+        <h2>{gameMessage}</h2>
+        <button className="game-button" onClick={replayGame}>{replayText}</button>
       </Modal>
     </>
   )

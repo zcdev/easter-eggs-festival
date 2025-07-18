@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 
 export default function Modal({ isOpen, onClose, children }) {
+  // Extract replayText from App button for use in aria-label
+  const title = children[1].props.children
   // Close modal when Escape key is pressed
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -17,7 +19,7 @@ export default function Modal({ isOpen, onClose, children }) {
   if (!isOpen) return null
 
   return (
-    <div className="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+    <div className="modal-overlay" role="dialog" aria-modal="true" aria-label={`Confirmation: ${title}`}>
       <div className="modal-content">
         {children}
         <button className="modal-close" onClick={onClose} aria-label="Close modal">
