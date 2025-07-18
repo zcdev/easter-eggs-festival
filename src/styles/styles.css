@@ -223,7 +223,7 @@ button.egg:focus {
     background-color: #333;
   }
 
-  .egglist p {
+  .egglist p, .modal-content {
     color: #222;
   }
 }
