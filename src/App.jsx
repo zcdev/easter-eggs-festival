@@ -11,9 +11,7 @@ import Modal from './components/Modal'
 const messages = {
   intro: "🌸 Pick wisely! Each egg holds a mystery number. Can you hit the target score exactly?",
   win: "🐣 Egg-cellent! You've matched the target score perfectly!",
-  loss: "🥚 Oops! You went over the target.",
-  progress: "🧺 The eggs are adding up—watch your total!",
-  retry: "🐇 Ready to hunt again? Click an egg to start a new round!"
+  loss: "🥚 Oops! You went over the target."
 }
 
 // Initial game state including score, status flags, and sound settings
