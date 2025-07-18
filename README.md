@@ -5,15 +5,11 @@ Match the target score by picking mystery eggs — but don't go over!
 
 🔗 **Live Demo:** [easter-eggs-festival.vercel.app](https://easter-eggs-festival.vercel.app/)
 
----
-
 ## Overview
 
 **Easter Eggs Festival** is a single-page application rebuilt from jQuery  
 (`jquery-3.3.1` with Bootstrap) to modern **React `v19.1.0`**.  
 This project focuses on refining accessibility, interaction design, and user experience. It was rebuilt using a mobile-first approach for a simpler, friendlier layout and enhanced with custom sound effects — following modern frontend best practices.
-
----
 
 ## 🎮 Features
 
@@ -24,8 +20,6 @@ This project focuses on refining accessibility, interaction design, and user exp
   → [Sound clips](https://github.com/zcdev/easter-eggs-festival/tree/main/public/assets/sounds) created in Logic Pro — feel free to use them royalty-free (please retain metadata)
 - 📱 Mobile-first responsive layout with CSS3 transitions and animations
 - ♿️ Fully keyboard-accessible and screen reader–friendly
-
----
 ## 🛠 Tech Stackk
 
 - [React 19](https://react.dev/)
@@ -34,8 +28,6 @@ This project focuses on refining accessibility, interaction design, and user exp
 - CSS transitions & keyframe animations
 - No UI framework — custom styling only
 - Deployed via Vercel
-
----
 
 ## 🚀 Run Locally
 
