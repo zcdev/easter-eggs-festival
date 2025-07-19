@@ -40,7 +40,7 @@ npm run dev
 
 ## 🧠 Developer Notes
 
-This project is part of my personal portfolio rebuild initiative, where I modernized the original legacy project from my bootcamp at UCBX using current React standards and accessibility principles.
+This project is part of my personal portfolio rebuild initiative, where I modernized the original [legacy project](https://github.com/zcdev/Unit-4-Game-old) from my bootcamp at [UCBX](https://extension.berkeley.edu/) using current React standards and accessibility principles.
 
 ### Key Takeaways
 
