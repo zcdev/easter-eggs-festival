@@ -16,11 +16,12 @@ This project focuses on refining accessibility, interaction design, and user exp
 - 🥚 Mystery egg values change every round
 - 💬 Modal feedback on win/loss with “Play Again” or “Try Again” options
 - ✅ Score tracking: wins, losses, current, and target scores
-- 🔈 Sound effects for win/loss outcomes with mute toggle  
+- 🔈 Sound effects for win/loss outcomes with mute toggle
   → [Sound clips](https://github.com/zcdev/easter-eggs-festival/tree/main/public/assets/sounds) created in Logic Pro — feel free to use them royalty-free (please retain metadata)
 - 📱 Mobile-first responsive layout with CSS3 transitions and animations
 - ♿️ Fully keyboard-accessible and screen reader–friendly
-## 🛠 Tech Stackk
+
+## 🛠 Tech Stack
 
 - [React 19](https://react.dev/)
 - [Vite](https://vitejs.dev/)
@@ -32,7 +33,7 @@ This project focuses on refining accessibility, interaction design, and user exp
 ## 🚀 Run Locally
 
 ```bash
-git clone https://github.com/your-username/easter-eggs-festival.git
+git clone https://github.com/zcdev/easter-eggs-festival.git
 cd easter-eggs-festival
 npm install
 npm run dev
