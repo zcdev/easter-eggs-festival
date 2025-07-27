@@ -128,7 +128,7 @@ export default function App() {
     // Return the list of egg objects
     return Array.from({ length: count }, (_, i) => ({
       id: i + 1,
-      image: `./assets/images/egg-${i + 1}.png`,
+      image: `/assets/images/egg-${i + 1}.png`,
       value: values[i],
       clicked: false
     }))
