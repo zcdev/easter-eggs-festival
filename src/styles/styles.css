@@ -42,7 +42,7 @@ header {
 
 header h1 {
   font-weight: 700;
-  color: #F6A1AD;
+  color: rgba(248, 132, 148, 1);
   font-size: 1.8rem;
   margin: 0 auto;
 }
@@ -108,7 +108,7 @@ button.egg {
 }
 
 button.egg:focus {
-  outline: 2px solid rgba(246, 161, 173, 1);
+  outline: 2px solid rgba(248, 102, 118, 1);
   outline-offset: 2px;
 }
 
@@ -145,13 +145,13 @@ button.egg:focus {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  background-color: rgba(246, 161, 173, 1);
+  background-color: rgba(248, 132, 148, 1);
   color: #fff;
   transition: background-color 0.2s ease;
 }
 
 .game-button:hover {
-  background-color: rgba(248, 132, 148, 1);
+  background-color: rgba(248, 102, 118, 1);
 }
 
 /* === Modal styling === */
