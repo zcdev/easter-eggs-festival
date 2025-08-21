@@ -1,7 +1,7 @@
 /* === Reset and base styles === */
 
 /* Google Font: Nunito */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=optional');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=optional");
 
 * {
   box-sizing: border-box;
@@ -10,7 +10,7 @@
 }
 
 :root {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 1.2rem;
   color-scheme: light dark;
 }
@@ -26,7 +26,7 @@ body {
   align-items: start;
   justify-content: center;
   height: 100vh;
-  background-image: url('/assets/images/grass.png');
+  background-image: url("/assets/images/grass.png");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -121,7 +121,7 @@ button.egg:focus {
 }
 
 .egg img {
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   width: 100px;
   max-width: 100px;
 }
@@ -151,7 +151,7 @@ button.egg:focus {
 }
 
 .game-button:hover {
-  background-color: rgba(248, 132, 148, 1)
+  background-color: rgba(248, 132, 148, 1);
 }
 
 /* === Modal styling === */
@@ -223,7 +223,8 @@ button.egg:focus {
     background-color: #333;
   }
 
-  .egglist p, .modal-content {
+  .egglist p,
+  .modal-content {
     color: #222;
   }
 }
