@@ -1,7 +1,7 @@
 let currentAudio: HTMLAudioElement | null = null;
 
 // Define the only valid statuses
-type SoundStatus = "won" | "loss";
+type SoundStatus = "won" | "lost";
 
 export function playSound(status: SoundStatus) {
   const winSound = "/assets/sounds/easter-eggs-festival-fx-win.mp3";
