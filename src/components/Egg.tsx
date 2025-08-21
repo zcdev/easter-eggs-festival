@@ -1,7 +1,12 @@
-export default function Egg({ egg, onClick }) {
+type EggProps = {
+    egg: any;
+    onClick: () => void;
+};
+
+export default function Egg({ egg, onClick }: EggProps) {
     return (
         <li>
-            <button className="egg" onClick={() => onClick(egg.value)} aria-label={egg.clicked ? `Egg ${egg.id}, value: ${egg.value}` : `Egg ${egg.id}`}>
+            <button className="egg" onClick={onClick} aria-label={`Egg ${egg.id}, value: ${egg.value}}`}>
                 <picture>
                     <source
                         type="image/webp"
@@ -17,5 +22,5 @@ export default function Egg({ egg, onClick }) {
                 </picture>
             </button>
         </li>
-    )
+    );
 }

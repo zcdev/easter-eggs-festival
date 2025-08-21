@@ -186,7 +186,7 @@ export default function App() {
       <Header message={messages.intro} />
       <main>
         <Scoreboard state={state} />
-        <EggList state={state}>
+        <EggList currentScore={state.currentScore}>
           {eggs.map((egg) => (
             <Egg key={egg.id} egg={egg} onClick={() => handleClick(egg.value)} />
           ))}
