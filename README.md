@@ -1,63 +1,51 @@
 # Easter Eggs Festival 🐣
 
-A strategic number-memory game built with React.  
-Match the target score by picking mystery eggs — but don't go over!
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React.js](https://img.shields.io/badge/React.js-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white)](https://vercel.com/)
 
-🔗 **Live Demo:** [easter-eggs-festival.vercel.app](https://easter-eggs-festival.vercel.app/)
+## 🌐 Live Demo
+Pick mystery eggs here: [easter-eggs-festival.vercel.app](https://easter-eggs-festival.vercel.app/) — match the target score, but don't go over!
 
 ## Overview
+**Deliverable:** A strategic number-memory game built with React.js. Features custom sound design that is both accessible and user-friendly, creating a fun and inclusive experience suitable for all ages.
 
-**Easter Eggs Festival** is a single-page application rebuilt from jQuery  
-(`jquery-3.3.1` with Bootstrap) to modern **React `v19.1.0`**.  
-This project focuses on refining accessibility, interaction design, and user experience. It was rebuilt using a mobile-first approach for a simpler, friendlier layout and enhanced with custom sound effects — following modern frontend best practices.
+**Purpose:** To give players a delightful way to practice basic math and memory skills.
 
-## 🎮 Features
+## 🛠️ Tech Stack
+- **Framework:** React.js
+- **Language:** JavaScript/TypeScript
+- **Deployment:** Vercel
 
-- 🥚 Mystery egg values change every round
-- 💬 Modal feedback on win/loss with “Play Again” or “Try Again” options
-- ✅ Score tracking: wins, losses, current, and target scores
-- 🔈 Sound effects for win/loss outcomes with mute toggle
-  → [Sound clips](https://github.com/zcdev/easter-eggs-festival/tree/main/public/assets/sounds) created in Logic Pro — feel free to use them royalty-free (please retain metadata)
-- 📱 Mobile-first responsive layout with CSS3 transitions and animations
-- ♿️ Fully keyboard-accessible and screen reader–friendly
+## ✨ Features
+- Mystery egg values change dynamically each round
+- Modal feedback on win/loss with clear “Play Again” or “Try Again” options
+- Scoreboard tracking wins, losses, current score, and target score
+- Custom sound effects for win/loss outcomes with a mute toggle  
+  → [Sound clips](https://github.com/zcdev/easter-eggs-festival/tree/main/public/assets/sounds) created in Logic Pro — free to use with metadata retained
+- Mobile-first responsive layout with smooth CSS3 transitions and animations
+- Fully keyboard-accessible and screen reader–friendly
 
-## 🛠 Tech Stack
+## 📚 What I Learned
+- Challenged myself to learn useReducer() from the React docs alone and confirmed the takeaways by ChatGPT.
+- Experimented with the nullish coalescing operator (??) to default action.payload, but realized it wasn't applicable since the payload was undefined, ended up using separate dispatched actions instead.
+- Gained a better understanding of useEffect(), and also clarified a misconception about useRef(): Not to use it with audio playback since referencing a persistent DOM element wasn't needed.
+- Confirmed WCAG guidelines don’t require controls unless sound plays automatically for more than 3 seconds and can’t be paused or stopped.
+- Explored CSS3 animations with ChatGPT, and implemented subtle modal fade/pop effects for better interaction feedback.
 
-- [React 19](https://react.dev/)
-- [Vite](https://vitejs.dev/)
-- CSS Grid & Flexbox
-- CSS transitions & keyframe animations
-- No UI framework — custom styling only
-- Deployed via Vercel
-
-## 🚀 Run Locally
-
-```bash
+## ⚡ Getting Started
+```
 git clone https://github.com/zcdev/easter-eggs-festival.git
 cd easter-eggs-festival
-npm install
-npm run dev
 ```
 
-## 🧠 Developer Notes
-
-This project is part of my personal portfolio rebuild initiative, where I modernized the original [legacy project](https://github.com/zcdev/Unit-4-Game-old) from my bootcamp at [UCBX](https://extension.berkeley.edu/) using current React standards and accessibility principles.
-
-### Key Takeaways
-
-💪 I challenged myself to learn useReducer() from the React docs alone, but needed help understanding how action objects worked. I consulted ChatGPT and was happy to figure it out with some trial and error.
-
-🌀 I experimented with the nullish coalescing operator (??) to default action.payload, but realized it wasn't applicable since the payload was undefined — I ended up using separate dispatched actions instead.
-
-💡 I gained a better understanding of useEffect(), and also clarified a misconception about useRef(): I initially tried to use it with audio playback, but it wasn’t suited for my use case since I wasn’t referencing a persistent DOM element.
-
-🔈 WCAG guidelines don’t require controls unless sound plays automatically for more than 3 seconds and can’t be paused or stopped — so my design complies.
-
-🤖 I used ChatGPT to explore CSS3 animations, and implemented subtle modal fade/pop effects for better interaction feedback.
-
-## 🙏 Acknowledgements
-
+## 🙏 Credits
 - **[Vecteezy](https://vecteezy.com)** – Graphic assets for the eggs and grass
 - **[OpenAI's ChatGPT](https://chatgpt.com)** – Assisted with code refactoring, best practices, and content guidance
 
-Created by ZCDEV — Designed, developed, and deployed with 🌸
+Created by [Zoe Chang](https://github.com/zcdev)    
+Designed, developed, and deployed with 🌸   
+(Originally developed in the UCBX curriculum)
+
+![GitHub repo size](https://img.shields.io/github/repo-size/zcdev/mytechiecookie)
+![GitHub last commit](https://img.shields.io/github/last-commit/zcdev/mytechiecookie)
