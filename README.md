@@ -14,17 +14,17 @@ Pick mystery eggs here: [easter-eggs-festival.vercel.app](https://easter-eggs-fe
 
 ## 🛠️ Tech Stack
 - **Framework:** React.js
-- **Language:** JavaScript/TypeScript
+- **Language:** JavaScript / TypeScript
 - **Deployment:** Vercel
 
 ## ✨ Features
 - Mystery egg values change dynamically each round
-- Modal feedback on win/loss with clear “Play Again” or “Try Again” options
+- Modal feedback on win / loss with clear “Play Again” or “Try Again” options
 - Scoreboard tracking wins, losses, current score, and target score
-- Custom sound effects for win/loss outcomes with a mute toggle  
+- Custom sound effects for win / loss outcomes with a mute toggle  
   → [Sound clips](https://github.com/zcdev/easter-eggs-festival/tree/main/public/assets/sounds) created in Logic Pro — free to use with metadata retained
 - Mobile-first responsive layout with smooth CSS3 transitions and animations
-- Fully keyboard-accessible and screen reader–friendly
+- Fully keyboard-accessible and screen reader-friendly
 
 ## 📚 What I Learned
 - Challenged myself to learn useReducer() from the React docs alone and confirmed the takeaways by ChatGPT.
@@ -41,10 +41,10 @@ cd easter-eggs-festival
 
 ## 🙏 Credits
 - **[Vecteezy](https://vecteezy.com)** – Graphic assets for the eggs and grass
-- **[OpenAI's ChatGPT](https://chatgpt.com)** – Assisted with code refactoring, best practices, and content guidance
 
 Created by [Zoe Chang](https://github.com/zcdev)    
-Designed, developed, and deployed with 🌸   
+Designed, developed, and deployed with 🌸  
+Inspired and informed through collaborative learning with ChatGPT. 
 (Originally developed in the UCBX curriculum)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/zcdev/mytechiecookie)
