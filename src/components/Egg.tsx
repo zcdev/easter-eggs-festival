@@ -14,8 +14,8 @@ export default function Egg({ egg, onClick }: EggProps) {
                     />
                     <img
                         src={`${egg.image}.png`}
-                        width={100}
-                        height={133}
+                        width={170}
+                        height={93}
                         alt=""
                         aria-hidden="true"
                     />

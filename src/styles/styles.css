@@ -57,7 +57,7 @@ header p {
 .scoreboard {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 0 2rem;
+  padding: 0.25rem 0 1rem;
 }
 
 .scoreboard p {
@@ -82,14 +82,14 @@ header p {
 
 .egglist {
   background: #daf0f1;
-  padding: 2.4rem 0;
+  padding: 1rem 0;
 }
 
 .egglist ul {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(2, 100px);
-  gap: 1rem;
+  grid-template-columns: repeat(4, 70px);
+  gap: 0.55rem;
   list-style: none;
   padding-left: 0;
   margin: 0;
@@ -122,8 +122,8 @@ button.egg:focus {
 
 .egg img {
   transition: all 0.2s ease-in-out;
-  width: 100px;
-  max-width: 100px;
+  max-width: 100%;
+  height: auto;
 }
 
 .egg img:hover {
@@ -133,21 +133,22 @@ button.egg:focus {
 /* === Game controls styling === */
 
 .game-controls {
-  margin: 1rem;
+  margin: 0 1rem;
   display: flex;
   justify-content: center;
 }
 
 .game-button {
-  margin: 1rem;
+  margin: 1rem 0.5rem;
   padding: 0.5rem 1rem;
-  font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   background-color: rgba(246, 161, 173, 1);
   color: #333;
   transition: background-color 0.2s ease;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .game-button:hover {
@@ -244,7 +245,24 @@ button.egg:focus {
     margin: 0.7rem 0;
   }
 
+  .egglist {
+    background: #daf0f1;
+    padding: 2.4rem 0;
+  }
+
   .egglist ul {
     grid-template-columns: repeat(4, 100px);
+  }
+
+  .scoreboard {
+    padding: 0.5rem 0 2rem;
+  }
+
+  .game-controls {
+    margin: 1rem;
+  }
+
+  .game-button {
+    font-size: 1rem;
   }
 }
