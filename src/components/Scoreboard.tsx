@@ -12,10 +12,10 @@ export default function Scoreboard({ state }: ScoreboardProps) {
     return (
         <>
             <section className="scoreboard" aria-label="Game scores">
-                <p>Target score: <span>{state.targetScore}</span></p>
+                <p>Target score: {state.targetScore}</p>
                 <div className="gamestatus" aria-label="Game status">
-                    <p>Win score: <span>{state.winScore}</span></p>
-                    <p>Loss score: <span>{state.loseScore}</span></p>
+                    <p>Win score: {state.winScore}</p>
+                    <p>Loss score: {state.loseScore}</p>
                 </div>
             </section>
         </>

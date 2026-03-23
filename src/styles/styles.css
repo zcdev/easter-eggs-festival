@@ -1,7 +1,7 @@
 /* === Reset and base styles === */
 
 /* Google Font: Nunito */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 * {
   box-sizing: border-box;
@@ -11,6 +11,8 @@
 
 :root {
   font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   font-size: 1.2rem;
   color-scheme: light dark;
 }
@@ -42,8 +44,7 @@ header {
   margin-top: 1.5rem;
 }
 
-header h1 {
-  font-weight: 700;
+h1 {
   color: rgba(246, 161, 173, 1);
   font-size: 1.8rem;
   margin: 0 auto;
@@ -65,10 +66,6 @@ header p {
 
 .scoreboard p {
   margin: auto;
-}
-
-.scoreboard p span {
-  font-weight: 700;
 }
 
 .gamestatus {
@@ -151,7 +148,6 @@ button.egg:focus {
   color: #333;
   transition: background-color 0.2s ease;
   font-size: 0.8rem;
-  font-weight: 600;
 }
 
 .game-button:hover {
@@ -240,7 +236,7 @@ button.egg:focus {
     margin-top: 3rem;
   }
 
-  header h1 {
+  h1 {
     font-size: 2rem;
     font-display: swap;
   }
