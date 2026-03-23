@@ -1,7 +1,7 @@
 /* === Reset and base styles === */
 
 /* Google Font: Nunito */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=optional");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 * {
   box-sizing: border-box;
@@ -27,9 +27,11 @@ body {
   justify-content: center;
   height: 100vh;
   background-image: url("/assets/images/grass.png");
+  background-size: auto;
   background-position: center bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  max-width: 100%;
 }
 
 /* === Header styling === */
@@ -45,6 +47,7 @@ header h1 {
   color: rgba(246, 161, 173, 1);
   font-size: 1.8rem;
   margin: 0 auto;
+  font-display: swap;
 }
 
 header p {
@@ -239,6 +242,7 @@ button.egg:focus {
 
   header h1 {
     font-size: 2rem;
+    font-display: swap;
   }
 
   header p {
